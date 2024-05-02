@@ -59,7 +59,7 @@ namespace CasinoDaddy3
         public void spin() // kan behöva lägga in för att disabla knappen under spin, om det tar lång tid.
         {
             string pictureIntro = "C:\\Users\\OliverApelqvistEriks\\source\\repos\\casinoDaddy2\\images\\";
-            List<string> pictures = new List<string>() {"2.png", "3.png"};
+            List<string> pictures = new List<string>() {"1.png", "2.png", "3.png"};
             
             Random random = new Random();
 
