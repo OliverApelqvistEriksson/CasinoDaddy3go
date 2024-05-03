@@ -19,6 +19,12 @@ namespace CasinoDaddy3
     {
         private Form1 parentForm;
 
+        string pictureIntro = "C:\\Users\\OliverApelqvistEriks\\source\\repos\\casinoDaddy2\\images\\";
+        string startImage = "C:\\Users\\OliverApelqvistEriks\\source\\repos\\casinoDaddy2\\images\\red.jpg";
+        List<string> spinPictures = new List<string>() { "1.png", "2.png", "3.png", "red.jpg" };
+        List<string> pictures = new List<string>() { "1.png", "2.png", "3.png" };
+
+
         public void setImage(int slotNumber, string image) {
             try
             {
@@ -34,7 +40,6 @@ namespace CasinoDaddy3
 
         public RutBoard(Form1 form) {
             parentForm = form;
-            string startImage = "C:\\Users\\OliverApelqvistEriks\\source\\repos\\casinoDaddy2\\images\\red.jpg";
             for (int i = 1; i <= 15; i++) {
                 setImage(i, startImage);
             }
@@ -42,31 +47,33 @@ namespace CasinoDaddy3
 
         public void runAnimation()
         {
-            string pictureIntro = "C:\\Users\\OliverApelqvistEriks\\source\\repos\\casinoDaddy2\\images\\";
-            List<string> spinPictures = new List<string>() { "red.jpg", "1.png", "2.png", "3.png" };
             for (int x = 0; x < 4; x++) // Change loop condition from <= 4 to < 4
             {
                 Console.WriteLine(x);
-                for (int y = 1; y <= 15; y++)
+                for(int y = 1; y <= 15; y++)
                 {
                     setImage(y, (pictureIntro + spinPictures[x]));
+                    Console.WriteLine("writing" + x.ToString());
                 }
-                Thread.Sleep(100);
+                Thread.Sleep(30);
             }
         }
 
 
         public void spin() // kan behöva lägga in för att disabla knappen under spin, om det tar lång tid.
         {
-            string pictureIntro = "C:\\Users\\OliverApelqvistEriks\\source\\repos\\casinoDaddy2\\images\\";
-            List<string> pictures = new List<string>() {"1.png", "2.png", "3.png"};
-            
-            Random random = new Random();
+            runAnimation();
+
+            Random random = new Random(); 
+            for (int x = 1;x <= 15; x++)
+            {
+                setImage(x, pictureIntro + pictures[random.Next(pictures.Count())]);
+            }
 
             // random slots-generering (numren)           
-            
 
-            
+
+
 
 
 

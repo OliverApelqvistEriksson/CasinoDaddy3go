@@ -5,7 +5,7 @@ namespace CasinoDaddy3
 {
     public partial class Form1 : Form
     {
-        private RutBoard rutBoard; // Declare RutBoard variable at the class level
+        private RutBoard rutBoard; // Startar rutBoard
 
         public Form1()
         {
@@ -14,17 +14,20 @@ namespace CasinoDaddy3
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            rutBoard = new RutBoard(this); // Instantiate RutBoard properly
+            rutBoard = new RutBoard(this); // fixar upp ny rutBoard
         }
 
         private void slot11_Click(object sender, EventArgs e)
         {
-            // Implement slot11_Click event handler if needed
+            // måste ta bort
         }
 
         private void spinButton_Click(object sender, EventArgs e)
         {
-            rutBoard.spin(); // Call rutBoard.spin() method
+            spinButton.Enabled = false;
+            rutBoard.spin(); // Calla spingrej
+            spinButton.Enabled = true;
+
         }
     }
 }
