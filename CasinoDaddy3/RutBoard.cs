@@ -11,6 +11,7 @@ using System.Timers;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Net.Mime.MediaTypeNames;
+using System.Security.Cryptography.X509Certificates;
 
 
 namespace CasinoDaddy3
@@ -24,8 +25,9 @@ namespace CasinoDaddy3
         List<string> spinPictures = new List<string>() { "1.png", "2.png", "3.png", "red.jpg" };
         List<string> pictures = new List<string>() { "1.png", "2.png", "3.png" };
 
+        //  List <int[]> combos = new List<int[]>()
 
-        public void setImage(int slotNumber, string image) {
+        private void setImage(int slotNumber, string image) {
             try
             {
                 System.Drawing.Image slotBild = System.Drawing.Image.FromFile(image);
@@ -38,48 +40,46 @@ namespace CasinoDaddy3
             }
         }
 
+        private void setImages(string image)
+        {
+            for (int y = 1; y <= 15; y++)
+            {
+                string bild = image;
+                setImage(y, bild);
+            }
+        }
+
         public RutBoard(Form1 form) {
             parentForm = form;
-            for (int i = 1; i <= 15; i++) {
-                setImage(i, startImage);
-            }
+            setImages(startImage);
         }
 
-        public void runAnimation()
+        private void runAnimation() // fungerar ej för tillfället, behöver kunna delaya bilder, är dock inte prio 1.
         {
-            for (int x = 0; x < 4; x++) // Change loop condition from <= 4 to < 4
+
+            for (int x = 0; x < 4; x++)
             {
                 Console.WriteLine(x);
-                for(int y = 1; y <= 15; y++)
-                {
-                    setImage(y, (pictureIntro + spinPictures[x]));
-                    Console.WriteLine("writing" + x.ToString());
-                }
-                Thread.Sleep(30);
+                setImages(pictureIntro + spinPictures[x]);
             }
         }
 
-
-        public void spin() // kan behöva lägga in för att disabla knappen under spin, om det tar lång tid.
+        private void winAnimation() //behöver få in argument att behandla, prio 2.
         {
-            runAnimation();
+        }
 
-            Random random = new Random(); 
-            for (int x = 1;x <= 15; x++)
+
+        public int[] spinAndGetSlots() // kan behöva lägga in för att disabla knappen under spin, om det tar lång tid.
+        {
+            int[] rutBoardIds = new int[15];
+
+            Random random = new Random(); // random slots-generering (numren)           
+            for (int x = 1; x <= 15; x++)
             {
-                setImage(x, pictureIntro + pictures[random.Next(pictures.Count())]);
+                rutBoardIds[x-1] = random.Next(pictures.Count());
+                setImage(x, pictureIntro + pictures[rutBoardIds[x-1]]);
             }
-
-            // random slots-generering (numren)           
-
-
-
-
-
-
-
-
-
+            return rutBoardIds; 
         }
     }
 

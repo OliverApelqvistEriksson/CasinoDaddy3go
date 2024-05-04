@@ -25,7 +25,7 @@ namespace CasinoDaddy3
         private void spinButton_Click(object sender, EventArgs e)
         {
             spinButton.Enabled = false;
-            rutBoard.spin(); // Calla spingrej
+            rutBoard.spinAndGetSlots(); // Calla spingrej
             spinButton.Enabled = true;
 
         }
