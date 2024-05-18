@@ -28,7 +28,6 @@ namespace CasinoDaddy3
         {
             spinButton.Enabled = false; // slå av knapp.
             int[] slots = rutBoard.spinAndGetSlots();
-            Console.WriteLine(slots);
             ComboDeterminer comboDeterminer = new ComboDeterminer(slots); // starta denna som ska kunna bestämma combos
            // Console.WriteLine(rutBoard.spinAndGetSlots()); // Calla spingrej
             spinButton.Enabled = true;
