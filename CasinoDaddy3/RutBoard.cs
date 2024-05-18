@@ -20,12 +20,15 @@ namespace CasinoDaddy3
     {
         private Form1 parentForm;
 
+
         string pictureIntro = "C:\\Users\\OliverApelqvistEriks\\source\\repos\\casinoDaddy2\\images\\";
         string startImage = "C:\\Users\\OliverApelqvistEriks\\source\\repos\\casinoDaddy2\\images\\red.jpg";
-        List<string> spinPictures = new List<string>() { "1.png", "2.png", "3.png", "red.jpg" };
+        List<string> animationPictures = new List<string>() { "1.png", "2.png", "3.png", "red.jpg" };
         List<string> pictures = new List<string>() { "1.png", "2.png", "3.png" };
 
         //  List <int[]> combos = new List<int[]>()
+
+        public int getPictureCount() { return pictures.Count; }
 
         private void setImage(int slotNumber, string image) {
             try
@@ -60,7 +63,7 @@ namespace CasinoDaddy3
             for (int x = 0; x < 4; x++)
             {
                 Console.WriteLine(x);
-                setImages(pictureIntro + spinPictures[x]);
+                setImages(pictureIntro + animationPictures[x]);
             }
         }
 
