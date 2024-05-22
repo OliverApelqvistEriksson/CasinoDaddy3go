@@ -9,7 +9,7 @@ namespace CasinoDaddy3
 
         
 
-        List<int[]> slotCombos = new List<int[]>
+        List<int[]> slotCombos = new List<int[]> //här skrivs alla arrays på combos i en lista (en lista så att det blir extra lätt att lägga till.)
         {
             new int[] {1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
             new int[] {0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0},
@@ -22,21 +22,20 @@ namespace CasinoDaddy3
 
         };
 
-        private int getValueHeight() 
+        private int getValueHeight() //varje bild har ett nummer, vilket betyder att man kan urskilja rutornas bilder (och med det se om de är samma). Detta får man genom arrayen som skickas till konstruktorn.
         {
-            int valueHeight = 0;
-            for (int i = 0; i < rutBoardValues.Length; i++) 
+            int valueHeight = 0; 
+            for (int i = 0; i < rutBoardValues.Length; i++) // Det den här gör är att den hittar den högsta punkten för allas siffror, för att sedan kunna gå igenom alla de siffrorna.
             {
                 if (rutBoardValues[i] > valueHeight)
                 {
                     valueHeight = rutBoardValues[i] + 1;
                 }
             }
-
             return valueHeight;
         }
 
-        public List<int> comboCheck()
+        public List<int> comboCheck() // ger ut alla kombos som ligger på rutBoard.
         {
             List<int> allaCombos = new List<int>();
             int height = getValueHeight(); // returnerar höjdvärdet på rutBoard
@@ -59,27 +58,24 @@ namespace CasinoDaddy3
                         }
                     }
 
-                    if (comboSant == true)
+                    if (comboSant == true) // om alla siffror är likadana i varje rutboard-värde så läggs den till i listan av kombos.
                     {
                         Console.WriteLine("combo" + x);
                         allaCombos.Add(x);
                     }
                 }
             }
-
-            return allaCombos;
+            return allaCombos; // här ges en lista (int) på alla combos ut.
         }
 
 
-        public ComboDeterminer(int[] values) //den tar in alla 15 värden i en int[15]
+        public ComboDeterminer(int[] values) //den tar in alla 15 värden i en int[15] (alltså rutboards rutor)
         {
             for (int i = 0; i < 15; i++) // den skriver in dem i den nya variabeln rutBoardValues
             {
-                rutBoardValues[i] = values[i];
+                rutBoardValues[i] = values[i]; // genom detta ger konstruktorn ut de viktiga siffrorna för rutBoard.
             }
-            // Console.WriteLine(string.Join(",", rutBoardValues)); //den visar alla nummer i console för lättare felsökning.
         
-            comboCheck();
         }
     }
 }

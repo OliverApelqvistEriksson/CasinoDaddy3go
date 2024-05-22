@@ -22,13 +22,9 @@ namespace CasinoDaddy3
 
 
         string pictureIntro = "C:\\Users\\OliverApelqvistEriks\\source\\repos\\casinoDaddy2\\images\\";
-        string startImage = "C:\\Users\\OliverApelqvistEriks\\source\\repos\\casinoDaddy2\\images\\red.jpg";
-        List<string> animationPictures = new List<string>() { "1.png", "2.png", "3.png", "red.jpg" };
-        List<string> pictures = new List<string>() { "1.png", "2.png", "3.png" };
-
-        //  List <int[]> combos = new List<int[]>()
-
-        public int getPictureCount() { return pictures.Count; }
+        string startImage = "red.jpg";
+        List<string> animationPictures = new List<string>() { "1.png", "2.png", "3.png" };
+        List<string> pictures = new List<string>() { "1.png", "2.png", "3.png", "4.png", "5.png" };
 
         private void setImage(int slotNumber, string image) {
             try
@@ -54,27 +50,30 @@ namespace CasinoDaddy3
 
         public RutBoard(Form1 form) {
             parentForm = form;
-            setImages(startImage);
+            setImages((pictureIntro + startImage));
         }
 
-        private void runAnimation() // fungerar ej för tillfället, behöver kunna delaya bilder, är dock inte prio 1.
+        private async Task runAnimation() // fungerar ej för tillfället, behöver kunna delaya bilder, är dock inte prio 1.
         {
-
-            for (int x = 0; x < 4; x++)
+            for (int i = 0; i < animationPictures.Count; i++)
             {
-                Console.WriteLine(x);
-                setImages(pictureIntro + animationPictures[x]);
+                setImages(pictureIntro + animationPictures[i]);
+                await Task.Delay(100); 
             }
         }
 
-        private void winAnimation() //behöver få in argument att behandla, prio 2.
+        private void winAnimation(List<int> comboNumbers ) //behöver få in argument att behandla, prio 2.
         {
+            //borde dock vara mycket enklare pga att man kan köra den här efter allt annat, vilket alltså inte ger interference vilket gör att man kanske kan använda Thread.sleep eller den andra.
         }
 
 
         public int[] spinAndGetSlots() // kan behöva lägga in för att disabla knappen under spin, om det tar lång tid.
         {
             int[] rutBoardIds = new int[15];
+
+ //           Task startAnimation = runAnimation();
+   //         startAnimation.Wait();
 
             Random random = new Random(); // random slots-generering (numren)           
             for (int x = 1; x <= 15; x++)

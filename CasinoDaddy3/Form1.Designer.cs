@@ -44,10 +44,11 @@
             this.slot14 = new System.Windows.Forms.PictureBox();
             this.slot15 = new System.Windows.Forms.PictureBox();
             this.spinButton = new System.Windows.Forms.Button();
-            this.moneyShowBox = new System.Windows.Forms.TextBox();
+            this.moneyBox = new System.Windows.Forms.TextBox();
             this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.moneyInsertButton = new System.Windows.Forms.Button();
+            this.kreditAdvarselButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.slot1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.slot2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.slot3)).BeginInit();
@@ -163,7 +164,6 @@
             this.slot11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.slot11.TabIndex = 10;
             this.slot11.TabStop = false;
-            this.slot11.Click += new System.EventHandler(this.slot11_Click);
             // 
             // slot12
             // 
@@ -211,29 +211,35 @@
             this.spinButton.UseVisualStyleBackColor = true;
             this.spinButton.Click += new System.EventHandler(this.spinButton_Click);
             // 
-            // moneyShowBox
+            // moneyBox
             // 
-            this.moneyShowBox.Location = new System.Drawing.Point(793, 526);
-            this.moneyShowBox.Name = "moneyShowBox";
-            this.moneyShowBox.Size = new System.Drawing.Size(165, 26);
-            this.moneyShowBox.TabIndex = 16;
+            this.moneyBox.Enabled = false;
+            this.moneyBox.Location = new System.Drawing.Point(793, 526);
+            this.moneyBox.Name = "moneyBox";
+            this.moneyBox.ReadOnly = true;
+            this.moneyBox.Size = new System.Drawing.Size(165, 26);
+            this.moneyBox.TabIndex = 16;
             // 
             // maskedTextBox1
             // 
+            this.maskedTextBox1.Enabled = false;
             this.maskedTextBox1.Location = new System.Drawing.Point(684, 526);
             this.maskedTextBox1.Name = "maskedTextBox1";
+            this.maskedTextBox1.ReadOnly = true;
             this.maskedTextBox1.Size = new System.Drawing.Size(103, 26);
             this.maskedTextBox1.TabIndex = 17;
             this.maskedTextBox1.Text = "cash money:";
             // 
             // button1
             // 
+            this.button1.CausesValidation = false;
             this.button1.Location = new System.Drawing.Point(12, 549);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(141, 73);
             this.button1.TabIndex = 18;
             this.button1.Text = "Ta ut pengar (bara för nördar)";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // moneyInsertButton
             // 
@@ -243,16 +249,30 @@
             this.moneyInsertButton.TabIndex = 19;
             this.moneyInsertButton.Text = "Sätt in pengar (som en riktig G)";
             this.moneyInsertButton.UseVisualStyleBackColor = true;
+            this.moneyInsertButton.Click += new System.EventHandler(this.moneyInsertButton_Click);
+            // 
+            // kreditAdvarselButton
+            // 
+            this.kreditAdvarselButton.Enabled = false;
+            this.kreditAdvarselButton.Location = new System.Drawing.Point(978, 512);
+            this.kreditAdvarselButton.Name = "kreditAdvarselButton";
+            this.kreditAdvarselButton.Size = new System.Drawing.Size(210, 57);
+            this.kreditAdvarselButton.TabIndex = 20;
+            this.kreditAdvarselButton.Text = "Du spelar på kredit! Lägg in pengar och fortsätt spela!";
+            this.kreditAdvarselButton.UseVisualStyleBackColor = true;
+            this.kreditAdvarselButton.Visible = false;
+            this.kreditAdvarselButton.Click += new System.EventHandler(this.kreditAdvarselButton_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1268, 682);
+            this.ClientSize = new System.Drawing.Size(1246, 767);
+            this.Controls.Add(this.kreditAdvarselButton);
             this.Controls.Add(this.moneyInsertButton);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.maskedTextBox1);
-            this.Controls.Add(this.moneyShowBox);
+            this.Controls.Add(this.moneyBox);
             this.Controls.Add(this.spinButton);
             this.Controls.Add(this.slot15);
             this.Controls.Add(this.slot14);
@@ -310,10 +330,11 @@
         private System.Windows.Forms.PictureBox slot14;
         private System.Windows.Forms.PictureBox slot15;
         private System.Windows.Forms.Button spinButton;
-        private System.Windows.Forms.TextBox moneyShowBox;
+        private System.Windows.Forms.TextBox moneyBox;
         private System.Windows.Forms.MaskedTextBox maskedTextBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button moneyInsertButton;
+        private System.Windows.Forms.Button kreditAdvarselButton;
     }
 }
 
