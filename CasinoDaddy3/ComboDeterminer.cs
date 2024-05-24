@@ -5,7 +5,7 @@ namespace CasinoDaddy3
 {
     internal class ComboDeterminer
     {
-        private int[] rutBoardValues = new int[15];
+        private int[] rutBoardValues = new int[15]; //eftersom det bara finns 15 slots går det bra med en array.
 
         
 

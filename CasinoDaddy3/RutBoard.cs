@@ -21,25 +21,26 @@ namespace CasinoDaddy3
         private Form1 parentForm;
 
 
-        string pictureIntro = "C:\\Users\\OliverApelqvistEriks\\source\\repos\\casinoDaddy2\\images\\";
-        string startImage = "red.jpg";
-        List<string> animationPictures = new List<string>() { "1.png", "2.png", "3.png" };
-        List<string> pictures = new List<string>() { "1.png", "2.png", "3.png", "4.png", "5.png" };
+        string pictureIntro = "C:\\Users\\OliverApelqvistEriks\\source\\repos\\casinoDaddy2\\images\\"; //alla bilder ligger i en fil på datorn, vilket gör att man enkelt kan använda denna för att korta ned strings i koden. 
+        string startImage = "red.jpg"; //startbilden på slotmaskinen
+        List<string> animationPictures = new List<string>() { "1.png", "2.png", "3.png" }; // bilder som inkluderas i animationen, är endast dessa just nu för simplisitet men bör kunna vara vilka som helst (helst några som ser ut som ett "bildspel")
+        List<string> pictures = new List<string>() { "1.png", "2.png", "3.png", "4.png", "5.png" }; //bilderna som randomisas i slots:en . Dessa två är listor för att man enkelt ska kunna addera eller ta bort bilder.
 
-        private void setImage(int slotNumber, string image) {
-            try
+        private void setImage(int slotNumber, string image) // sätter en av slots-en (enligt slotNumret) till en av bilderna (som länkas i form av en string)
+        { 
+            try // det den gör är att den ställer in bilden i Form(design)
             {
-                System.Drawing.Image slotBild = System.Drawing.Image.FromFile(image);
-                PictureBox bildBox = (PictureBox)parentForm.Controls.Find("slot" + (slotNumber).ToString(), true)[0];
-                bildBox.Image = slotBild;
+                System.Drawing.Image slotBild = System.Drawing.Image.FromFile(image); //Den tar string-en och hittar bilden länkad genom den (path till en fil)
+                PictureBox bildBox = (PictureBox)parentForm.Controls.Find("slot" + (slotNumber).ToString(), true)[0]; //Sedan hittar den en pictureBox med namnet slot - följt av ett nummer.
+                bildBox.Image = slotBild; //och sist skickar den den path-ade bilden till bildBoxen.
             }
-            catch (Exception)
+            catch (Exception) // om den inte funkar så visar den vilken slot den inte funkar på
             {
                 MessageBox.Show("fel i slots-generering på " + (slotNumber).ToString());
             }
         }
 
-        private void setImages(string image)
+        private void setImages(string image) //sätter varje bild, väldigt bra för introt och animationerna
         {
             for (int y = 1; y <= 15; y++)
             {
@@ -48,9 +49,10 @@ namespace CasinoDaddy3
             }
         }
 
-        public RutBoard(Form1 form) {
+        public RutBoard(Form1 form) //när rutBoard instansieras skapas en variabel för parentForm, vilket tillåter RutBoard att ändra i design.
+        {
             parentForm = form;
-            setImages((pictureIntro + startImage));
+            setImages((pictureIntro + startImage)); //sedan sätts bilderna till startImage (den röda).
         }
 
         private async Task runAnimation() // fungerar ej för tillfället, behöver kunna delaya bilder, är dock inte prio 1.
@@ -62,7 +64,7 @@ namespace CasinoDaddy3
             }
         }
 
-        private void winAnimation(List<int> comboNumbers ) //behöver få in argument att behandla, prio 2.
+        private void winAnimation(List<int> comboNumbers ) //behöver få in argument att behandla, inte klar än.
         {
             //borde dock vara mycket enklare pga att man kan köra den här efter allt annat, vilket alltså inte ger interference vilket gör att man kanske kan använda Thread.sleep eller den andra.
         }
@@ -72,16 +74,16 @@ namespace CasinoDaddy3
         {
             int[] rutBoardIds = new int[15];
 
- //           Task startAnimation = runAnimation();
+ //           Task startAnimation = runAnimation(); (fungerar inte än)
    //         startAnimation.Wait();
 
             Random random = new Random(); // random slots-generering (numren)           
-            for (int x = 1; x <= 15; x++)
+            for (int x = 0; x < 15; x++) //Den gör 15 random slots
             {
-                rutBoardIds[x-1] = random.Next(pictures.Count());
-                setImage(x, pictureIntro + pictures[rutBoardIds[x-1]]);
+                rutBoardIds[x] = random.Next(pictures.Count()); //den gör ett random-nummer upp till antalet bilder 
+                setImage(x+1, pictureIntro + pictures[rutBoardIds[x]]); //sedan fixar den varje bild
             }
-            return rutBoardIds; 
+            return rutBoardIds; //och den returnerar en array av bilder, eftersom det behövs för att bestämma combos.
         }
     }
 

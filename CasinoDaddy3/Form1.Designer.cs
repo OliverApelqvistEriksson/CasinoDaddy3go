@@ -239,7 +239,7 @@
             this.button1.TabIndex = 18;
             this.button1.Text = "Ta ut pengar (bara för nördar)";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.takeOutButton_Click);
             // 
             // moneyInsertButton
             // 
@@ -250,18 +250,6 @@
             this.moneyInsertButton.Text = "Sätt in pengar (som en riktig G)";
             this.moneyInsertButton.UseVisualStyleBackColor = true;
             this.moneyInsertButton.Click += new System.EventHandler(this.moneyInsertButton_Click);
-            // 
-            // kreditAdvarselButton
-            // 
-            this.kreditAdvarselButton.Enabled = false;
-            this.kreditAdvarselButton.Location = new System.Drawing.Point(978, 512);
-            this.kreditAdvarselButton.Name = "kreditAdvarselButton";
-            this.kreditAdvarselButton.Size = new System.Drawing.Size(210, 57);
-            this.kreditAdvarselButton.TabIndex = 20;
-            this.kreditAdvarselButton.Text = "Du spelar på kredit! Lägg in pengar och fortsätt spela!";
-            this.kreditAdvarselButton.UseVisualStyleBackColor = true;
-            this.kreditAdvarselButton.Visible = false;
-            this.kreditAdvarselButton.Click += new System.EventHandler(this.kreditAdvarselButton_Click);
             // 
             // Form1
             // 
