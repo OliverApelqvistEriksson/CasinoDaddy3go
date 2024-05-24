@@ -21,10 +21,10 @@ namespace CasinoDaddy3
         private Form1 parentForm;
 
 
-        string pictureIntro = "C:\\Users\\OliverApelqvistEriks\\source\\repos\\casinoDaddy2\\images\\"; //alla bilder ligger i en fil på datorn, vilket gör att man enkelt kan använda denna för att korta ned strings i koden. 
-        string startImage = "red.jpg"; //startbilden på slotmaskinen
-        List<string> animationPictures = new List<string>() { "1.png", "2.png", "3.png" }; // bilder som inkluderas i animationen, är endast dessa just nu för simplisitet men bör kunna vara vilka som helst (helst några som ser ut som ett "bildspel")
-        List<string> pictures = new List<string>() { "1.png", "2.png", "3.png", "4.png", "5.png" }; //bilderna som randomisas i slots:en . Dessa två är listor för att man enkelt ska kunna addera eller ta bort bilder.
+        private string pictureIntro = "C:\\Users\\OliverApelqvistEriks\\source\\repos\\casinoDaddy2\\images\\"; //alla bilder ligger i en fil på datorn, vilket gör att man enkelt kan använda denna för att korta ned strings i koden. 
+        private string startImage = "red.jpg"; //startbilden på slotmaskinen
+        private List<string> animationPictures = new List<string>() { "1.png", "2.png", "3.png" }; // bilder som inkluderas i animationen, är endast dessa just nu för simplisitet men bör kunna vara vilka som helst (helst några som ser ut som ett "bildspel")
+        private List<string> pictures = new List<string>() { "1.png", "2.png", "3.png", "4.png", "5.png" }; //bilderna som randomisas i slots:en . Dessa två är listor för att man enkelt ska kunna addera eller ta bort bilder.
 
         private void setImage(int slotNumber, string image) // sätter en av slots-en (enligt slotNumret) till en av bilderna (som länkas i form av en string)
         { 
